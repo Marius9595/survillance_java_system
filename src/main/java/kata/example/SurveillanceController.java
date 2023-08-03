@@ -10,10 +10,18 @@ public class SurveillanceController implements Suscriptor{
 
     @Override
     public void processEvent(SensorEvent event) {
-        if (event == SensorEvent.MOVEMENT_DETECTED)
+        if (isNeededToBeRecorded(event))
             this.recorder.start();
-        else if (event == SensorEvent.MOVEMENT_NOT_DETECTED || event == SensorEvent.ERROR){
+        else if (isNotNeededToBeRecorded(event)){
             this.recorder.stop();
         }
+    }
+
+    private static boolean isNeededToBeRecorded(SensorEvent event) {
+        return event == SensorEvent.MOVEMENT_DETECTED;
+    }
+
+    private static boolean isNotNeededToBeRecorded(SensorEvent event) {
+        return event == SensorEvent.MOVEMENT_NOT_DETECTED || event == SensorEvent.ERROR;
     }
 }
