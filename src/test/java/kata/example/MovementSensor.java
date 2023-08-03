@@ -12,7 +12,7 @@ public class MovementSensor implements Sensor {
 
     @Override
     public void notifySuscriptors(SensorEvent sensorEvent) {
-
+        this.suscriptors.forEach(suscriptor -> suscriptor.processEvent(sensorEvent));
     }
 
     @Override

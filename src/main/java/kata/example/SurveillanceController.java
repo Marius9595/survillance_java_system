@@ -1,11 +1,17 @@
 package kata.example;
 
-public class SurveillanceController {
+public class SurveillanceController implements Suscriptor{
+    private Sensor sensor;
+    private Recorder recorder;
 
-
-    public static SurveillanceController startSurveillance(Sensor sensor, Recorder recorder) {
-
-        return null;
+    public void startSurveillance(Sensor sensor, Recorder recorder) {
+        this.sensor = sensor;
+        this.recorder = recorder;
+        this.sensor.subscribe(this);
     }
 
+    @Override
+    public void processEvent(SensorEvent event) {
+        this.recorder.stop();
+    }
 }
