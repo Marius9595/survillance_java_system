@@ -14,7 +14,7 @@ public class SurveillanceController implements Suscriptor{
     public void processEvent(SensorEvent event) {
         if (event == SensorEvent.MOVEMENT_DETECTED)
             this.recorder.start();
-        else if (event == SensorEvent.MOVEMENT_NOT_DETECTED){
+        else if (event == SensorEvent.MOVEMENT_NOT_DETECTED || event == SensorEvent.ERROR){
             this.recorder.stop();
         }
     }
