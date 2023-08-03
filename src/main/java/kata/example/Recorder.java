@@ -1,6 +1,6 @@
 package kata.example;
 
-public class Recorder {
-    public void stop() {
-    }
+public interface Recorder {
+    void stop();
+    void start();
 }
